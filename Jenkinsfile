@@ -1,12 +1,13 @@
 pipeline {
-    agent {
-        docker 'nginx'
-    }
+    agent { 
+        label 'master'
+        }
     stages {
-        stage('Test') {
+        stage('running a docker container') {
             steps {
-                sh 'pwd'
-                sh 'whoami'
+                sh 'docker run --name nginx8081 -d -p 8081:80 nginx'
+                sh 'cd clock'
+                sh 'docker cp scripts styles clock.png index.html nginx8081:/usr/share/nginx/html'
             }
         }
     }
