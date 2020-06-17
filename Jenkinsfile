@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'master'
+        docker 'nginx'
     }
     stages {
         stage('Test') {
