@@ -1,11 +1,12 @@
 pipeline {
     agent {
-        docker { image 'nginx' }
+        label 'master'
     }
     stages {
         stage('Test') {
             steps {
                 sh 'pwd'
+                sh 'whoami'
             }
         }
     }
